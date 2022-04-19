@@ -12,7 +12,7 @@ const websites = require('../websites.json');
         await require(scriptPath)(page, website);
         
         console.log("Proceso de Scrapping finalizado en la pagina " + website.name);
-        await page.close();
     }
+    await page.close();
     await browser.close();
 })(); 
