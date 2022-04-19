@@ -1,7 +1,7 @@
 [
     {
         "name": "El Mundo",
-        "url": "http://www.elmundo.es",
+        "url": "https://elmundo.es",
         "scriptName": "elmundo",
         "selector": {
             "section" : "#js_526feae561fd3d3c3f8b4578 > div:nth-child(6)",
@@ -9,11 +9,5 @@
             "image" : ".ue-c-cover-content__figure picture source",
             "urlsource" : "a"
         }
-    },
-    {
-        "name": "El Pais",
-        "url": "http://www.elpais.com",
-        "scriptName": "elpais",
-        "selector" : "#fusion-app > main > div.z.z-hi > section._g._g-md._g-o.b.b-d"
     }
 ]

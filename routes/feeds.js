@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const{ getFeeds, getFeedsById, deleteFeed, updateFeed ,createFeed} = require('../controller/feeds');
+const express = require('express');
+const router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get("/" , getFeeds);
+router.get("/:id" , getFeedsById);
+router.post("/" , createFeed);
+router.put("/:id" , updateFeed);
+router.delete("/:id" , deleteFeed);
+
 
 module.exports = router;
+
+

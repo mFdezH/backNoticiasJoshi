@@ -1,10 +1,15 @@
+(async ()=>{
+  await require('./database');
+})()
+
 require('./scrapping/scrapping');
-require('./database');
+
 let express = require('express');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let indexRouter = require('./routes/feeds');
+
+let feedsRouter = require('./routes/feeds');
 
 let app = express();
 
@@ -13,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/feeds', indexRouter);
+app.use('/feeds', feedsRouter);
 
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;

@@ -1,5 +1,4 @@
 const feedModel = require('../../models/feed');
-const mongoose = require('mongoose');
 module.exports  = async (page, website) => {
     const {selector, name} = website;
     await page.goto(website.url)
@@ -25,17 +24,16 @@ module.exports  = async (page, website) => {
     },selector.feed, selector.image, selector.urlsource, name)
     
     const regExp = new RegExp('[A-z]+');
-    const FeedModel = mongoose.model('feeds', feedModel);
     for(const feed of feedText){
         (async () => {
             const textSplited = await feed.infofeed.split('\n').filter((txt) => regExp.test(txt));
-            await FeedModel.create({
+            await feedModel.create({
                 'title': textSplited[0],
                 'body': textSplited[3],
                 'image': feed.imagefeed,
                 'source': feed.infosource,
                 'publisher': feed.namenewslatter
-            });
+            }).then(() => console.log("Los datos se han guardado en la BBDD")).catch(err => console.log(err));
         })()
     }
 }

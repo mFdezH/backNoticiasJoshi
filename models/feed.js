@@ -8,5 +8,5 @@ const feedModel = mongoose.Schema({
     publisher: String
 })
 
-module.exports = feedModel;
+module.exports = mongoose.model('feed', feedModel);
 

@@ -5,12 +5,14 @@ const websites = require('../websites.json');
 ( async ()=> {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-
-    for(let i = 0; i <= websites.length ; i++){
-        const scriptPath = path.join(__dirname, '/scripts', websites[i].scriptName);
-        await require(scriptPath)(page, websites[i]);
+    
+    for(let website of websites){
+        console.log("Proceso de Scrapping en la pagina " + website.name);
+        const scriptPath = path.join(__dirname, '/scripts', website.scriptName);
+        await require(scriptPath)(page, website);
+        
+        console.log("Proceso de Scrapping finalizado en la pagina " + website.name);
+        await page.close();
     }
-
-    await page.close();
     await browser.close();
-})();
+})(); 
